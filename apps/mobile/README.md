@@ -1,50 +1,86 @@
-# Welcome to your Expo app 👋
+# 📱 Mobile App (Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The React Native mobile app built with Expo and NativeWind for cross-platform styling.
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## 🚀 Quick Start
 
 ```bash
-npm run reset-project
+# From project root
+pnpm --filter mobile dev
+
+# Or from this directory
+pnpm dev        # Start Metro bundler
+pnpm ios        # Open iOS simulator  
+pnpm android    # Open Android emulator
+pnpm web        # Open in browser
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🏗️ Architecture
 
-## Learn more
+This app demonstrates:
+- **Expo Router**: File-based routing with tab navigation
+- **Shared UI Components**: Uses components from `packages/ui/`
+- **NativeWind**: Tailwind CSS classes for consistent styling
+- **Cross-Platform**: Same code runs on iOS, Android, and web
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📁 Key Files
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+apps/mobile/
+├── src/app/
+│   ├── (tabs)/
+│   │   ├── (home)/         # Home tab
+│   │   └── demo/           # Demo tab
+│   ├── _layout.tsx         # Root layout
+│   └── index.tsx           # Entry redirect
+├── tailwind.config.js      # NativeWind configuration
+└── package.json            # Dependencies & scripts
+```
 
-## Join the community
+## 🎨 Styling
 
-Join our community of developers creating universal apps.
+Uses NativeWind for Tailwind CSS classes on React Native components:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```tsx
+<View className="flex-1 bg-gray-50 p-4">
+  <Text className="text-2xl font-bold text-gray-900">
+    Styled with Tailwind
+  </Text>
+</View>
+```
+
+## 🔧 Development
+
+- **Hot Reload**: Enabled for fast development
+- **TypeScript**: Full type safety
+- **Expo Router**: File-based navigation
+- **Safe Area**: Proper handling with `react-native-safe-area-context`
+
+## 📦 Key Dependencies
+
+- `expo` - React Native platform
+- `expo-router` - File-based routing
+- `nativewind` - Tailwind for React Native
+- `ui` - Shared component library
+- `react-native-safe-area-context` - Safe area handling
+
+## 🚀 Building & Deployment
+
+```bash
+# Development build
+eas build --profile development
+
+# Production builds
+eas build --platform ios
+eas build --platform android
+
+# Submit to app stores
+eas submit
+```
+
+## 📚 Learn More
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [NativeWind Guide](https://www.nativewind.dev/)
+- [EAS Build & Submit](https://docs.expo.dev/build/introduction/)

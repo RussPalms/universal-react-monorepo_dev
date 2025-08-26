@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Web App (Next.js)
 
-## Getting Started
+The web application built with Next.js 15 and React Native Web for cross-platform component compatibility.
 
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# From project root
+pnpm --filter web dev
+
+# Or from this directory
+pnpm dev        # Start development server
+pnpm build      # Build for production
+pnpm start      # Start production server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This app demonstrates:
+- **Next.js 15**: App Router with Server Components
+- **React Native Web**: Renders React Native components as HTML
+- **Shared UI Components**: Uses components from `packages/ui/`
+- **Hybrid Approach**: Mix React (HTML) and React Native components
 
-## Learn More
+## 📁 Key Files
 
-To learn more about Next.js, take a look at the following resources:
+```
+apps/web/
+├── src/app/
+│   ├── page.tsx            # Home page
+│   ├── nativewind/         # Shared components demo
+│   └── layout.tsx          # Root layout
+├── next.config.ts          # Next.js + RN Web config
+├── tailwind.config.js      # Tailwind configuration
+└── package.json            # Dependencies & scripts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Mixing React & React Native
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can seamlessly mix HTML elements with React Native components:
 
-## Deploy on Vercel
+```tsx
+export default function Page() {
+  return (
+    <div className="container">           {/* HTML element */}
+      <header className="header">         {/* HTML element */}
+        <Button                           {/* React Native component */}
+          title="Shared Component"
+          onPress={() => alert('Works!')}
+        />
+      </header>
+    </div>
+  );
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚙️ Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### React Native Web Setup
+The `next.config.ts` handles React Native Web integration:
+
+```tsx
+transpilePackages: [
+  'react-native',
+  'react-native-web',
+  'nativewind',
+],
+webpack: (config) => {
+  config.resolve.alias = {
+    'react-native$': 'react-native-web',  // Key transformation
+  };
+  // Platform-specific file extensions
+  config.resolve.extensions = [
+    '.web.ts', '.web.tsx', '.web.js',
+    ...config.resolve.extensions,
+  ];
+}
+```
+
+### Tailwind Integration
+Works with both HTML elements and React Native components via NativeWind.
+
+## 🔧 Development Features
+
+- **Hot Reload**: Fast refresh for development
+- **TypeScript**: Full type safety
+- **Server Components**: Next.js 15 App Router
+- **Cross-Platform Components**: Shared with mobile app
+
+## 📦 Key Dependencies
+
+- `next` - React framework
+- `react-native-web` - RN components → HTML
+- `nativewind` - Tailwind for React Native
+- `ui` - Shared component library
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+pnpm build
+# Deploy to Vercel via Git or CLI
+```
+
+### Other Platforms
+```bash
+pnpm build
+# Deploy the `.next` directory to any hosting platform
+```
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Native Web](https://necolas.github.io/react-native-web/)
+- [NativeWind Guide](https://www.nativewind.dev/)
+- [Vercel Deployment](https://vercel.com/docs)
