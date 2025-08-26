@@ -4,57 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-This is a monorepo with shared React/React Native components using:
-- **Turborepo**: Manages the monorepo build system and task orchestration
-- **pnpm**: Package manager with workspace configuration
-- **NativeWind**: Shared Tailwind CSS styling across mobile and web platforms
-- **React 19**: Unified React version across all apps with overrides in root package.json
+This is a Turborepo monorepo with cross-platform React/React Native components using:
+- **Turborepo**: Orchestrates build tasks and dependency management across workspaces
+- **pnpm**: Package manager with workspace configuration and version overrides
+- **NativeWind**: Cross-platform Tailwind CSS styling system
+- **React 19 + React Native 0.79.5**: Unified versions enforced via package overrides
 
-### Apps Structure
-- `apps/mobile/`: Expo React Native app with NativeWind styling
-- `apps/web/`: Next.js app with react-native-web integration for component sharing
+### Workspace Structure
+- `apps/mobile/`: Expo React Native app with Expo Router and NativeWind
+- `apps/web/`: Next.js 15 app with react-native-web transpilation
+- `packages/ui/`: Shared component library with NativeWind styling
 
-### Key Integrations
-- **React Native Web**: Enables sharing components between mobile and web
-- **NativeWind**: Provides consistent Tailwind styling across platforms
-- **Expo Router**: File-based routing for the mobile app
-- **Next.js 15**: Web app with custom webpack config for RN compatibility
+### Cross-Platform Integration
+- **React Native Web**: Enables component sharing between mobile and web via webpack aliases
+- **NativeWind**: Provides consistent Tailwind styling across all platforms
+- **Shared Components**: Located in `packages/ui/` with TypeScript exports
+- **Platform Extensions**: Support for `.web.tsx`, `.native.tsx` file variants
 
 ## Development Commands
 
-Run from root directory using Turbo:
+### Root Commands (Turborepo)
 ```bash
 pnpm dev          # Start all apps in development mode
-pnpm build        # Build all apps  
-pnpm lint         # Lint all apps
-pnpm check-types  # Type check all apps
+pnpm build        # Build all apps and packages
+pnpm lint         # Lint all workspaces
+pnpm check-types  # TypeScript check all workspaces
 ```
 
-Individual app commands:
+### Individual App Commands
 ```bash
-# Mobile app (from apps/mobile/)
-pnpm dev          # expo start
+# Mobile app (apps/mobile/)
+pnpm dev          # expo start (Metro bundler)
 pnpm ios          # expo start --ios
-pnpm android      # expo start --android
+pnpm android      # expo start --android  
 pnpm web          # expo start --web
+pnpm reset-project # Reset to blank Expo project
 
-# Web app (from apps/web/)  
+# Web app (apps/web/)
 pnpm dev          # next dev
 pnpm build        # next build
 pnpm start        # next start
 ```
 
-## Configuration Notes
+## Key Configuration Details
 
-- **Package Overrides**: React 19, React Native 0.79.5, and Tailwind 3.4.17 versions are enforced at root level
-- **Next.js Config**: Custom webpack configuration transpiles react-native packages for web compatibility
-- **Tailwind**: Both apps use NativeWind preset for cross-platform styling
-- **TypeScript**: Configured with NativeWind types in mobile app
+### Package Management
+- **Version Overrides**: React 19.0.0, React Native 0.79.5, React Native Web 0.20.0, Tailwind 3.4.17 enforced in root package.json
+- **Workspace Dependencies**: UI package referenced as `"ui": "workspace:*"` in apps
 
-## Cross-Platform Development
+### Next.js Configuration
+- **Transpile Packages**: react-native, react-native-web, nativewind, react-native-css-interop
+- **Webpack Aliases**: `react-native$` -> `react-native-web` for web compatibility
+- **Platform Extensions**: Prioritizes `.web.ts`, `.web.tsx`, `.web.js` files
 
-When working with shared components:
-- Use NativeWind classes for styling (works on both platforms)  
-- Place shared components in appropriate locations for import by both apps
-- Test changes on both mobile and web platforms
-- Be aware of platform-specific extensions (.web.tsx, .native.tsx)
+### Tailwind/NativeWind Setup
+- **Shared Config**: Both apps include `packages/ui/src/**/*.{js,jsx,ts,tsx}` in content paths
+- **NativeWind Preset**: Required for cross-platform class compatibility
+- **TypeScript Types**: NativeWind types configured in mobile app
+
+### Shared Components
+- **Location**: `packages/ui/src/` with barrel exports from `index.ts`
+- **Styling**: Use NativeWind classes (e.g., `className="px-6 py-3 rounded-lg"`)
+- **Components**: Built with React Native primitives (View, Text, Pressable) for cross-platform compatibility
