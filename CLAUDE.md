@@ -38,7 +38,6 @@ pnpm dev          # expo start (Metro bundler)
 pnpm ios          # expo start --ios
 pnpm android      # expo start --android  
 pnpm web          # expo start --web
-pnpm reset-project # Reset to blank Expo project
 
 # Web app (apps/web/)
 pnpm dev          # next dev
