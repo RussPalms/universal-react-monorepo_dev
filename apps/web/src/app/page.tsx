@@ -18,17 +18,17 @@ export default function Home() {
           
           {/* Social Links */}
           <div className="flex justify-center items-center gap-4 text-sm text-gray-500">
-            <a href="https://github.com/yourusername/repo" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
+            <Link href="https://github.com/gurselcakar/universal-react-monorepo" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
               ⭐ Star on GitHub
-            </a>
+            </Link>
             <span>•</span>
-            <a href="https://yourblog.com/post" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
+            <Link href="https://gurselcakar/writing/monorepo-guide" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
               📝 Read the guide
-            </a>
+            </Link>
             <span>•</span>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
+            <Link href="https://twitter.com/gurselcakar" target="_blank" rel="noopener" className="hover:text-blue-600 transition-colors">
               🐦 Follow updates
-            </a>
+            </Link>
           </div>
         </div>
       </header>
