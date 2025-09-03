@@ -2,6 +2,15 @@
 
 A clean, minimal template for building cross-platform applications with shared UI components.
 
+## 📋 Current Versions & Updates
+
+> **Note**: This template currently uses:
+> - **Tailwind CSS v3** - Utility-first CSS framework
+> - **NativeWind v4** - Tailwind CSS for React Native
+> - **Expo SDK 53** - React Native development platform
+>
+> With the upcoming release of **Expo SDK 54**, **NativeWind v5**, and **Tailwind CSS v4**, this template will be updated to support the latest versions and features.
+
 ## 🚀 Features
 
 - **🔄 Cross-Platform**: Share components between web and mobile
