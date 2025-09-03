@@ -14,7 +14,7 @@ A clean, minimal template for building cross-platform applications with shared U
 ## 📸 Demo
 
 <p align="center">
-  <img src="./demo.gif" alt="Universal React Monorepo Demo" width="100%">
+  <img src="./universal-react-monorepo-demo.png" alt="Universal React Monorepo Demo" width="100%">
 </p>
 
 *Cross-platform development: iOS Simulator, Android Emulator, and Web Browser running simultaneously with hot reload.*
