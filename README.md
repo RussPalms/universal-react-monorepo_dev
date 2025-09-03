@@ -26,7 +26,7 @@ A clean, minimal template for building cross-platform applications with shared U
 ## 📁 Project Structure
 
 ```
-mammoth/
+universal-react-monorepo/
 ├── apps/
 │   ├── mobile/          # Expo React Native app
 │   └── web/             # Next.js web app
@@ -50,8 +50,8 @@ mammoth/
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd mammoth
+git clone https://github.com/gurselcakar/universal-react-monorepo.git
+cd universal-react-monorepo
 
 # Install dependencies
 pnpm install
