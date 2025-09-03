@@ -11,6 +11,14 @@ A clean, minimal template for building cross-platform applications with shared U
 - **📱 Modern Stack**: Next.js 15, Expo, React 19, TypeScript
 - **🏗️ Clean Architecture**: Minimal, extensible, production-ready
 
+## 📸 Demo
+
+<p align="center">
+  <img src="./demo.gif" alt="Universal React Monorepo Demo" width="100%">
+</p>
+
+*Cross-platform development: iOS Simulator, Android Emulator, and Web Browser running simultaneously with hot reload.*
+
 ## 🛠️ Tech Stack
 
 | Technology | Purpose | Version |
@@ -206,9 +214,9 @@ This project is licensed under the ISC License.
 
 ## 🔗 Links
 
-- [⭐ Star on GitHub](https://github.com/yourusername/repo)
-- [📝 Read the guide](https://yourblog.com/post)
-- [🐦 Follow updates](https://twitter.com/yourusername)
+- [⭐ Star on GitHub](https://github.com/gurselcakar/universal-react-monorepo)
+- [📝 Read the guide](https://gurselcakar.dev/writing/monorepo-guide)
+- [🐦 Follow updates](https://twitter.com/gurselcakar)
 
 ---
 
