@@ -108,18 +108,27 @@ pnpm start     # Production server
 Components in `packages/ui/` use React Native primitives with NativeWind styling:
 
 ```tsx
-// Shared Button component
+// Shared Button component with tailwind-variants
+import { tv } from 'tailwind-variants';
+
+const buttonVariants = tv({
+  slots: {
+    button: 'px-6 py-3 rounded-lg active:opacity-80',
+    text: 'text-center font-semibold',
+  },
+  variants: {
+    variant: {
+      primary: { button: 'bg-blue-600', text: 'text-white' },
+      secondary: { button: 'bg-gray-200', text: 'text-gray-900' },
+    },
+  },
+});
+
 export function Button({ title, onPress, variant = 'primary' }) {
+  const { button, text } = buttonVariants({ variant });
   return (
-    <Pressable
-      onPress={onPress}
-      className={`px-6 py-3 rounded-lg ${
-        variant === 'primary' ? 'bg-blue-600' : 'bg-gray-200'
-      }`}
-    >
-      <Text className="text-center font-semibold text-white">
-        {title}
-      </Text>
+    <Pressable onPress={onPress} className={button()}>
+      <Text className={text()}>{title}</Text>
     </Pressable>
   );
 }
