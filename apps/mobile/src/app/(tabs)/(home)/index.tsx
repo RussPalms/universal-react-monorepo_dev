@@ -2,12 +2,11 @@ import { Text, View, ScrollView, Pressable } from "react-native";
 import { Card } from "ui";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
-
 export default function Home() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50" edges={['top', 'left', 'right']}>
-      <ScrollView 
-        className="flex-1 px-4" 
+      <ScrollView
+        className="flex-1 px-4"
         showsVerticalScrollIndicator={false}
         contentContainerClassName="py-6"
       >
@@ -22,7 +21,7 @@ export default function Home() {
           <Text className="text-lg text-gray-600 text-center px-4 mb-6">
             Cross-platform template with shared UI components
           </Text>
-          
+
           {/* Social Links */}
           <View className="flex-row items-center gap-3 px-4">
             <Text className="text-xs text-gray-500">⭐ Star repo</Text>
@@ -32,6 +31,7 @@ export default function Home() {
             <Text className="text-xs text-gray-500">🐦 Follow</Text>
           </View>
         </View>
+
 
         {/* Tech Stack */}
         <View className="mb-8">
@@ -152,7 +152,7 @@ export default function Home() {
               <Text className="text-sm text-gray-600 text-center mb-4">
                 Shared components working across platforms
               </Text>
-              
+
               <Link href="/(tabs)/demo" asChild>
                 <Pressable className="bg-blue-600 px-6 py-2 rounded-lg active:opacity-80">
                   <View className="flex-row items-center gap-2">

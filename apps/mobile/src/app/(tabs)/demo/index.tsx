@@ -6,8 +6,8 @@ import { Link } from "expo-router";
 export default function Demo() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50" edges={['top', 'left', 'right']}>
-      <ScrollView 
-        className="flex-1" 
+      <ScrollView
+        className="flex-1"
         showsVerticalScrollIndicator={false}
         contentContainerClassName="px-4 py-6"
       >
@@ -29,7 +29,7 @@ export default function Demo() {
 
         {/* Component Showcase */}
         <View className="gap-6">
-          
+
           {/* Button Component */}
           <Card variant="elevated">
             <Text className="text-lg font-semibold text-gray-900 mb-4">Button</Text>
@@ -65,7 +65,7 @@ export default function Demo() {
                 Components use React Native primitives (View, Text, Pressable) with NativeWind for styling.
                 React Native Web transforms these into HTML elements for the browser.
               </Text>
-              
+
               <View className="flex-row gap-3">
                 <View className="flex-1 bg-white p-3 rounded border border-blue-100">
                   <View className="flex-row items-center gap-2 mb-1">
@@ -74,7 +74,7 @@ export default function Demo() {
                   </View>
                   <Text className="text-blue-700 text-xs">React Native Web → HTML</Text>
                 </View>
-                
+
                 <View className="flex-1 bg-white p-3 rounded border border-purple-100">
                   <View className="flex-row items-center gap-2 mb-1">
                     <Text className="text-purple-600">📱</Text>
@@ -98,7 +98,7 @@ export default function Demo() {
               </View>
             </Pressable>
           </Link>
-          
+
           <Text className="text-sm text-gray-500 text-center">
             Try the web app to see identical components in action
           </Text>
